@@ -9,73 +9,40 @@
                 <h2>  </h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="" title="Go back"> <i class="fas fa-backward "></i> </a>
+                <a class="btn btn-primary" href="{{url('/products')}}" title="Go back"> <i class="fas fa-backward "></i> </a>
             </div>
         </div>
     </div>
+    <form method="post" action="{{ route('products.show') }}">
+        @csrf
+    <table class="table table-bordered table-responsive-lg">
+        <tr>
+            <th>Trade Name</th>
+            <th>Application</th>
+            <th>Market</th>
+            <th>Product Category</th>
+            <th>Product Range</th>
+            <th>Description Uses</th>
+            <th>INCI Name</th>
+            <th>% Active</th>
+            <th>Recommended Dosage</th>
+            <th>Date Created</th>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
+            <th width="280px">Actions</th>
+        </tr>
 
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Application</strong>
+            <tr>
+                <td>{{$products->name}}</td>
+                <td>{{$products->application}}</td>
+                <td>{{$products->market_id}}</td>
+                <td>{{$products->product_category}}</td>
+                <td>{{$products->product_range}}</td>
+                <td>{{$products->description_uses}}</td>
+                <td>{{$products->inci_name}}</td>
+                <td>{{$products->percent_active}}</td>
+                <td>{{$products->recommended_dosage}}</td>
+                <td>{{$products->date_created}}</td>
+            </tr>
 
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>market_association</strong>
-
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>product_category</strong>
-
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>product_range</strong>
-
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>description_uses</strong>
-
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>inci_name</strong>
-
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>percent_active</strong>
-
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>recommended_dosage</strong>
-
-            </div>
-        </div>
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Date Created</strong>
-
-            </div>
-        </div>
-    </div>
+    </table>
 @endsection

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +34,8 @@ Route::get('/subsidiaries', function () {
     return view('subsidiaries/index');
 })->name('subsidiaries');
 
-/*
-Route::get('/products', function () {
-    return view('products/index');
-})->name('products');
 
-Route::post('/products/create', 'ProductsController@create')->name('products.create');
-*/
 Route::resource('products', ProductsController::class);
+
+Route::resource('markets', MarketsController::class);
 

@@ -4,11 +4,11 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="row">
-                <div class="col-sm-6 pull-left">
+                <div class="col-sm-6 ">
                     <h2 class="page-title" >@yield("title")</h2>
                 </div>
-                <div class="col-sm-6 pull-right">
-                    <a class="btn btn-primary" href="" title="Go back"> <i class="fas fa-backward "></i> </a>
+                <div class="col-sm-6 ">
+                    <a class="btn btn-primary" href="{{url('/products')}}" title="Go back"> <i class="fas fa-backward "></i> </a>
                     </a>
                 </div>
             </div>

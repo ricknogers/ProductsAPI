@@ -71,8 +71,22 @@
         <li class="nav-item ">
             <a class="nav-link" href="{{url('/products')}}">
 
-                <i class="fas fa-fw fa-hands-helping"></i>
-                <span>{{ __('Products') }}</span>
+                <i class="fas fa-lightbulb"></i>
+                <span>{{ __('SNF Products') }}</span>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{url('/markets')}}">
+
+                <i class="fas fa-info-circle"></i>
+                <span>{{ __('SNF Markets') }}</span>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="#">
+
+                <i class="fas fa-globe"></i>
+                <span>{{ __('SNF Subsidiaries') }}</span>
             </a>
         </li>
 

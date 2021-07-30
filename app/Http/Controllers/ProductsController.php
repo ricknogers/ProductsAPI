@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Products;
 use Illuminate\Http\Request;
 
+
 class ProductsController extends Controller
 {
     /**
@@ -14,12 +15,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-	    $products = Products::all();
-        return view('products.index', compact('products'));
-        
-      
-
-
+        $products = Products::latest()->paginate(5);
+        return view('products.index', compact('products'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -30,7 +28,6 @@ class ProductsController extends Controller
     public function create()
     {
         return view('products.create');
-
     }
 
     /**
@@ -41,26 +38,25 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-	    
-	     $storeData = $request->validate([
+        $request->validate([
             'name' => 'required',
             'application' => 'required',
-            'market_association' => 'required',
-            'product_category'=> 'required',
-            'description_uses'=> 'required',
-
+            'market_id' => 'required',
+            'product_category' => 'required',
+            'product_range' => 'required',
+            'description_uses' => 'required'
         ]);
-        $products = Products::create($storeData);
 
-        return redirect('/products')->with('completed', 'Product has been saved!');
-        
-        
+        Products::create($request->all());
+
+        return redirect()->route('products.index')
+            ->with('success', 'Product created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Products $products
      * @return \Illuminate\Http\Response
      */
     public function show(Products $products)
@@ -71,55 +67,52 @@ class ProductsController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Products  $products
+     * @param  int  $id
+     * @param  \App\Products $products
      * @return \Illuminate\Http\Response
      */
     public function edit(Products $products)
     {
-	    $products = Products::findOrFail($id);
-        return view('products.edit', compact('products'));
+        $products = Products::find($products);
+        return view('products.edit')->with('Products', $products);
+
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Products  $products
+     * @param  \App\Products $products
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Products $products)
     {
-	    
-	    $updateData = $request->validate([
-             'name' => 'required',
+        $request->validate([
+            'name' => 'required',
             'application' => 'required',
-            'market_association' => 'required',
-            'product_category'=> 'required',
-            'description_uses'=> 'required',
-
+            'market_id' => 'required',
+            'product_category' => 'required',
+            'product_range' => 'required',
+            'description_uses' => 'required'
         ]);
-        Products::whereId($id)->update($updateData);
-        return redirect('/products')->with('completed', 'Product has been updated');
-       
+        $products->update($request->all());
+
+        return redirect()->route('products.index')
+            ->with('success', 'Product updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Products $products
      * @return \Illuminate\Http\Response
      */
     public function destroy(Products $products)
     {
-	     $products = Products::findOrFail($id);
-        $products->delete();
-
-        return redirect('/products')->with('completed', 'Products has been deleted');
-        
         $products->delete();
 
         return redirect()->route('products.index')
-            ->with('success', 'Products deleted successfully');
+            ->with('success', 'Product deleted successfully');
     }
 }

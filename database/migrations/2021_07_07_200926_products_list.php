@@ -14,10 +14,10 @@ class ProductsList extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name', 255)->nullable();
             $table->string('application', 255)->nullable();
-            $table->string('market_association', 255)->nullable();
+            $table->integer('market_id')->unsigned();
             $table->string('product_category', 500)->nullable();
             $table->string('product_range', 500)->nullable();
             $table->string('description_uses', 500)->nullable();
@@ -25,6 +25,8 @@ class ProductsList extends Migration
             $table->string('percent_active', 255)->nullable();
             $table->string('recommended_dosage', 255)->nullable();
             $table->timestamps();
+            $table->foreign('market_id')->references('id')->on('markets');
+
         });
     }
 

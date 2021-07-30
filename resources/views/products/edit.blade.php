@@ -9,7 +9,7 @@
                     <h2 class="page-title" >@yield("title")</h2>
                 </div>
                 <div class="col-sm-6 pull-right">
-                    <a class="btn btn-primary" href="" title="Go back"> <i class="fas fa-backward "></i> </a>
+                    <a class="btn btn-primary" href="{{url('/products')}}" title="Go back"> <i class="fas fa-backward "></i> </a>
                 </div>
             </div>
         </div>
@@ -26,70 +26,59 @@
         </div>
     @endif
 
-    <form action="" method="POST">
+    <form action="{{ route('products.update') }}" method="POST">
         @csrf
         @method('PUT')
-
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="Name">
+                    <input type="text" class="form-control" name="name"  value="{{$products->name}}"/>
                 </div>
             </div><!--Name-->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Application:</strong>
-                    <input type="text" name="application" class="form-control" placeholder="application">
+                    <input type="text" class="form-control" name="application"  value="{{$products->application}}"/>
                 </div>
             </div><!--application-->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Market Association:</strong>
-                    <input type="text" name="market_association" class="form-control" placeholder="market_association">
+                    <input type="text" class="form-control" name="market_association"  value="{{$products->market_association}}"/>
+
                 </div>
             </div><!--market_association-->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Product Category:</strong>
-                    <input type="text" name="product_category" class="form-control" placeholder="product_category">
+                    <input type="text" class="form-control" name="product_category"  value="{{$products->product_category}}"/>
                 </div>
             </div><!--product_category-->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Product Range:</strong>
-                    <input type="text" name="product_range" class="form-control" placeholder="product_range">
-                </div>
-            </div><!--product_range-->
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Description Uses:</strong>
-                    <textarea class="form-control" style="height:50px" name="description_uses"
-                              placeholder="description_uses"></textarea>
+                    <textarea name="description_uses" rows="3" class="form-control" type="text"  value="{{$products->description_uses}}"></textarea>
                 </div>
             </div><!--description_uses-->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Inci Name:</strong>
-                    <input type="text" name="inci_name" class="form-control" placeholder="inci_name">
+                    <input type="text" class="form-control" name="product_range"  value="{{$products->product_range}}"/>
+                </div>
+            </div><!--product_range-->
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="inci_name"  value="{{$products->inci_name}}"/>
                 </div>
             </div><!--inci_name-->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Percent Active:</strong>
-                    <input type="text" name="percent_active" class="form-control" placeholder="percent_active">
+                    <input type="text" class="form-control" name="percent_active" value="{{$products->percent_active}}" />
                 </div>
             </div><!--percent_active-->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Recommended Dosage:</strong>
-                    <input type="text" name="recommended_dosage" class="form-control" placeholder="recommended_dosage">
+                    <input type="text" class="form-control" name="recommended_dosage" value="{{$products->recommended_dosage}}"/>
                 </div>
             </div><!--recommended_dosage-->
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit Change</button>
             </div>
         </div>
-
     </form>
 @endsection
