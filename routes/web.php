@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\MarketController;
+=======
+use App\Http\Controllers\ProductController;
+
+>>>>>>> f7d507781f192894534ff69452995d0f5c486be1
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +26,30 @@ Route::middleware(['auth'])->group(function() {
     Route::view('home', 'layouts.admin')->name('home');
 });
 
+<<<<<<< HEAD
 Route::resource('market', MarketController::class);
+=======
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::put('/profile', 'ProfileController@update')->name('profile.update');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/subsidiaries', function () {
+    return view('subsidiaries/index');
+})->name('subsidiaries');
+
+
+Route::resource('products', ProductsController::class);
+
+Route::resource('markets', MarketsController::class);
+
+>>>>>>> f7d507781f192894534ff69452995d0f5c486be1

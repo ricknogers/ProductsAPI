@@ -11,4 +11,8 @@ npm-debug.log
 yarn-error.log
 /storage/logs
 /ProductsAPI
+<<<<<<< HEAD
 /Modules
+=======
+/Modules
+>>>>>>> f7d507781f192894534ff69452995d0f5c486be1
