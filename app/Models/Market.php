@@ -11,4 +11,10 @@ class Market extends Model
     protected $fillable = [
         'marketName', 'description', 'marketImage', 'linkedinURL', 'orderNumber'
     ];
+
+    public function products(){
+        return $this->hasOne(Products::class);
+    }
+
 }
+

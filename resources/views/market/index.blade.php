@@ -10,7 +10,7 @@
                 <a class="btn btn-primary" href="{{ route('market.create') }}"> Add New Market</a>
             </div>
         </div>
-       
+
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
@@ -19,23 +19,23 @@
 
         <table class="table table-bordered table-responsive" style="margin-top:20px;">
         <tr>
-            <th>No</th>
+            <th>Order Number</th>
             <th>Market Image</th>
             <th>Market Name</th>
             <th>Description</th>
             <th>LinkedIn URL</th>
-            <th>Order Number</th>
+
             <th width="280px">Action</th>
         </tr>
         @foreach ($market as $marketing)
             <tr>
-                <td>{{ $marketing->id }}</td>
+                <td>{{ $marketing->orderNumber }}</td>
                 <td><img src="{{ Storage::url($marketing->marketImage) }}" class="img-thumbnail " height="75" width="75" alt="" /></td>
 
                 <td>{{ $marketing->marketName }}</td>
                 <td>{{ $marketing->description }}</td>
                 <td>{{ $marketing->linkedinURL }}</td>
-                <td>{{ $marketing->orderNumber }}</td>
+
                 <td>
                     <form action="{{ route('market.destroy',$marketing->id) }}" method="POST">
 

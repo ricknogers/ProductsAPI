@@ -15,7 +15,8 @@ class MarketController extends Controller
     public function index()
     {
 
-        $data['market'] = Market::orderBy('id','asc')->paginate(5);
+
+        $data['market'] = Market::orderBy('id','asc')->paginate(15);
 
         return view('market.index', $data);
 
@@ -43,11 +44,11 @@ class MarketController extends Controller
         $request->validate([
             'marketName' => 'required',
             'description' => 'required',
-            'marketImage' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'marketImage' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:4000',
             'linkedinURL' => 'required',
             'orderNumber' => 'required'
         ]);
-        $path = $request->file('marketImage')->store('public/storage/images/uploads/');
+        $path = $request->file('marketImage')->store('public/images');
         $market = new Market;
         $market->marketName = $request->marketName;
         $market->description = $request->description;
@@ -110,9 +111,9 @@ class MarketController extends Controller
 
         if($request->hasFile('marketImage')){
             $request->validate([
-                'marketImage' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+                'marketImage' => 'required|image|mimes:jpg,png,jpeg|max:4000',
             ]);
-            $path = $request->file('marketImage')->store('public/storage/images/uploads/');
+            $path = $request->file('marketImage')->store('public/images');
             $market->marketImage = $path;
         }
         $market->marketName = $request->marketName;

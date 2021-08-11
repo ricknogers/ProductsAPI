@@ -13,6 +13,7 @@ class CreateMarketsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('markets');
         Schema::create('markets', function (Blueprint $table) {
             $table->id();
             $table->string('marketName');
